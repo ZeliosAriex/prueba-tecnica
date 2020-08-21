@@ -16,7 +16,7 @@ const UserListPage = () => {
       <h1>User List</h1>
       <ol>
         {users.map((u) => (
-          <li>{u.first_name}</li>
+          <li key={u.id}>{u.first_name}</li>
         ))}
       </ol>
     </>
