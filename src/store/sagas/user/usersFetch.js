@@ -11,8 +11,8 @@ import { getT } from '../../util/getTranslation'
 function* requestUsersFetch(action) {
   try {
     // Consumimos la API para obtener la lista de usuarios
-    const URL = `${process.env.REACT_APP_API_BASE_URL}/users?page=${action.payload.page}`
-    const response = yield call(apiCall, 'GET', URL)
+    const endpoint = `/users?page=${action.payload.page}`
+    const response = yield call(apiCall, 'GET', endpoint)
     const { data } = yield call([response, 'json'])
 
     yield put(usersFetchSuccess(data))

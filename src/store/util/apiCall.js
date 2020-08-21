@@ -1,2 +1,4 @@
 // Función que encapsula a fetch para simplificar su uso dentro de los sagas
-export const apiCall = (method, url) => fetch(url, { method })
+const BASE_URL = process.env.REACT_APP_API_BASE_URL
+
+export const apiCall = (method, endpoint) => fetch(`${BASE_URL}${endpoint}`, { method })
