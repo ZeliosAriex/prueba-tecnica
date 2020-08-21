@@ -1,0 +1,6 @@
+{
+  "greetMessage": "Bienvenido :D",
+  "errorMessages": {
+    "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios"
+  }
+}

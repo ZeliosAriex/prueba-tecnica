@@ -5,7 +5,9 @@ import App from './App'
 import * as serviceWorker from './serviceWorker'
 import createStore from './store'
 import './scss/index.scss'
+import './i18n' // Configuramos la i18n
 
+// Store centralizado de redux
 const store = createStore()
 
 ReactDOM.render(

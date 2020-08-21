@@ -6,6 +6,7 @@ import {
 import { apiCall } from '../../util/apiCall'
 import { createErrorAction } from '../../util/createErrorAction'
 import { usersFetchSuccess } from '../../actions/user'
+import { getT } from '../../util/getTranslation'
 
 function* requestUsersFetch(action) {
   try {
@@ -19,7 +20,7 @@ function* requestUsersFetch(action) {
     yield put(
       createErrorAction(
         USERS_FETCH_FAILED,
-        '😥 Ha habido un problema al intentar recuperar los usuarios'
+        getT('errorMessages.usersFetchFailed')
       )
     )
   }
