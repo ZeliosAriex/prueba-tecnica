@@ -3,8 +3,11 @@ import createSagaMiddleware from 'redux-saga'
 import rootReducer from './reducers'
 import rootSaga from './sagas'
 
+// Habilitamos las redux devtools extension solo en desarrollo
 const reduxDevtoolsExtensionCompose =
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  process.env.NODE_ENV === 'development'
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    : null
 
 export default () => {
   const composeEnhancers = reduxDevtoolsExtensionCompose || compose
