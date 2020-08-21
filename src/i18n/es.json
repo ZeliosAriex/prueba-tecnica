@@ -1,5 +1,17 @@
 {
   "greetMessage": "Bienvenido :D",
+  "pages": {
+    "userList": {
+      "title": "Lista De Usuarios"
+    },
+    "notFound": {
+      "title": "Oops, no encontramos nada por aquí arriba"
+    }
+  },
+  "documentHeadTitles": {
+    "userList": "Lista de Usuarios",
+    "notFound": "No Encontrado"
+  },
   "errorMessages": {
     "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios"
   }

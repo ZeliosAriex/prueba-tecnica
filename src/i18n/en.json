@@ -1,6 +1,19 @@
 {
   "greetMessage": "Welcome :D",
+  "pages": {
+    "userList": {
+      "title": "Users List"
+    },
+    "notFound": {
+      "title": "Oops, we didn't find anything up here"
+    }
+  },
+  "documentHeadTitles": {
+    "userList": "User List",
+    "notFound": "Not Found"
+  },
   "errorMessages": {
     "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users"
   }
 }
+

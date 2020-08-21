@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { Helmet, HelmetProvider } from 'react-helmet-async'
+import { BrowserRouter as Router } from 'react-router-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import createStore from './store'
-import './scss/index.scss'
+import './styles/index.scss'
 import './i18n' // Configuramos la i18n
 
 // Store centralizado de redux
@@ -13,7 +15,15 @@ const store = createStore()
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <HelmetProvider>
+        <Router>
+          <Helmet
+            titleTemplate='%s | Prueba Técnica'
+            defaultTitle='Prueba Técnica'
+          />
+          <App />
+        </Router>
+      </HelmetProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

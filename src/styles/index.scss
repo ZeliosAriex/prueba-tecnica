@@ -1,0 +1,48 @@
+// Bootsrap (Modular)
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/navbar';
+
+/*
+  ==== Media Queries ====
+
+  * Pantallas extra pequeñas (móviles) < 576px
+  * Pantallas pequeñas (_sm, tablets _en vertical) ≥ 576px
+  * Pantallas medianas (md, para tablets en horizontal)  ≥ 768px
+  * Pantallas grandes (lg, tamaño escritorio) ≥ 992px
+  * Pantallas extra grandes (xl, escritorio grande) ≥ 1200px
+
+  Para poder usarlas con styled-components he creado 2 archivos donde almacenar
+  dicha información:
+
+  * sizes:        contiene los tamaños de los dispositivos
+
+  * mediaQueries: contiene los mediaQueries (min-width) para poder usarlos
+                  dentro de styled-components, usando mobile first styling
+*/
+
+// ==== ESTILOS GLOBALES ====
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
