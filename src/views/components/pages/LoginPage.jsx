@@ -11,7 +11,7 @@ import { mediaQueries } from '../../../styles/mediaQueries'
 import Title from '../common/Title'
 
 const StyledLoginPage = styled(Container).attrs({
-  className: 'mt-5',
+  className: 'mt-5 mb-5',
 })`
   .title {
     text-align: center;
@@ -35,13 +35,12 @@ const LoginPage = () => {
   const auth = useSelector((state) => state.auth)
   const { register, handleSubmit, errors } = useForm()
   const { t } = useTranslation()
-
   /* Si estamos logeados no hay necesidad de mostrar la pagina de login
   por lo cual redireccionamos */
   if (auth.isLoggedIn) return <Redirect to='/' />
 
-  const onSubmit = (data) => {
-    console.log(data)
+  const onSubmit = ({ email, password }) => {
+    console.log(email, password)
   }
 
   // TODO: Separar los input en sus propios componentes (Input)
@@ -102,7 +101,7 @@ const LoginPage = () => {
           </div>
 
           <button type='submit' className='btn btn-primary mt-4'>
-            Submit
+            Iniciar Sesión
           </button>
         </form>
       </Col>
