@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async'
@@ -9,12 +9,22 @@ import Container from '../common/Container'
 import Col from '../common/Col'
 import { mediaQueries } from '../../../styles/mediaQueries'
 import Title from '../common/Title'
+import { startLoginUser } from '../../../store/actions/auth'
+import loginIcon from '../../../resources/images/people.svg'
 
 const StyledLoginPage = styled(Container).attrs({
   className: 'mt-5 mb-5',
 })`
+  .page-icon {
+    width: 4rem;
+    display: block;
+    margin: 0 auto 1rem auto;
+    user-drag: none;
+  }
+
   .title {
     text-align: center;
+    user-select: none;
   }
 
   button[type='submit'] {
@@ -30,9 +40,28 @@ const StyledLoginPage = styled(Container).attrs({
     }
   }
 `
+// Para la validación de los campos del formulario
+const passwordMinLength = 4
+const fieldOptions = {
+  email: {
+    required: 'Se requiere la dirección de correo electrónico',
+    pattern: {
+      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+      message: 'Correo electrónico inválido',
+    },
+  },
+  password: {
+    required: 'Se requiere la contraseña',
+    minLength: {
+      value: passwordMinLength,
+      message: `La contraseña debe ser mínimo de ${passwordMinLength} caracteres`,
+    },
+  },
+}
 
 const LoginPage = () => {
   const auth = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
   const { register, handleSubmit, errors } = useForm()
   const { t } = useTranslation()
   /* Si estamos logeados no hay necesidad de mostrar la pagina de login
@@ -40,7 +69,7 @@ const LoginPage = () => {
   if (auth.isLoggedIn) return <Redirect to='/' />
 
   const onSubmit = ({ email, password }) => {
-    console.log(email, password)
+    dispatch(startLoginUser(email, password))
   }
 
   // TODO: Separar los input en sus propios componentes (Input)
@@ -48,7 +77,8 @@ const LoginPage = () => {
     <StyledLoginPage>
       <Helmet title={t('documentHeadTitles.loginPage')} />
       <Col sm={10} md={8} lg={5} className='m-auto'>
-        <Title className='title mb-4'>Iniciar sesión</Title>
+        <img className='page-icon' src={loginIcon} alt='Lock' />
+        <Title className='title mb-5'>Iniciar sesión</Title>
         <form
           className='needs-validation'
           onSubmit={handleSubmit(onSubmit)}
@@ -62,13 +92,7 @@ const LoginPage = () => {
               type='email'
               className={`form-control ${errors.email && 'is-invalid'}`}
               id='emailInput'
-              ref={register({
-                required: 'Se requiere la dirección de correo electrónico',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Correo electrónico inválido',
-                },
-              })}
+              ref={register(fieldOptions.email)}
             />
             {errors.email && (
               <div className='invalid-feedback d-block'>
@@ -85,13 +109,7 @@ const LoginPage = () => {
               type='password'
               className={`form-control ${errors.password && 'is-invalid'}`}
               id='passwordInput'
-              ref={register({
-                required: 'Se requiere la contraseña',
-                minLength: {
-                  value: 4,
-                  message: 'La contraseña debe ser mínimo de 4 caracteres',
-                },
-              })}
+              ref={register(fieldOptions.password)}
             />
             {errors.password && (
               <div className='invalid-feedback d-block'>

@@ -1,8 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import {
-  USERS_FETCH_REQUEST,
-  USERS_FETCH_FAILED,
-} from '../../actions/user/actionTypes'
+import * as types from '../../actions/user/actionTypes'
 import { apiCall } from '../../util/apiCall'
 import { createErrorAction } from '../../util/createErrorAction'
 import { usersFetchSuccess } from '../../actions/user'
@@ -19,15 +16,15 @@ function* requestUsersFetch(action) {
   } catch (e) {
     yield put(
       createErrorAction(
-        USERS_FETCH_FAILED,
+        types.USERS_FETCH_FAILED,
         getT('errorMessages.usersFetchFailed')
       )
     )
   }
 }
 
-function* saga() {
-  yield takeLatest(USERS_FETCH_REQUEST, requestUsersFetch)
+function* watcher() {
+  yield takeLatest(types.USERS_FETCH_REQUEST, requestUsersFetch)
 }
 
-export default saga
+export default watcher

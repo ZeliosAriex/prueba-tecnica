@@ -11,8 +11,8 @@ function* handleError(action) {
   })
 }
 
-function* saga() {
+function* watcher() {
   yield takeLatest(errorList, handleError)
 }
 
-export default saga
+export default watcher

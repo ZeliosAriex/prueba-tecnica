@@ -1,10 +1,5 @@
-import styled from 'styled-components'
-
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-confusing-arrow */
 /* eslint-disable object-curly-newline */
-/* eslint-disable function-paren-newline */
-/* eslint-disable implicit-arrow-linebreak */
+import styled from 'styled-components'
 
 /*
  Nos devuelve correctamente las clases de las columnas respecto a los parámetros
@@ -27,5 +22,7 @@ const getSizes = (xs, sm, md, lg, xl) => {
 const Col = styled.div.attrs(({ xs = 12, sm = 0, md = 0, lg = 0, xl = 0 }) => ({
   className: `${getSizes(xs, sm, md, lg, xl)}`,
 }))``
+
+Col.displayName = 'Col'
 
 export default Col

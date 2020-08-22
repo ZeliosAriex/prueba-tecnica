@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 import 'react-toastify/dist/ReactToastify.css'
-// import MainContainer from './views/components/common/MainContainer'
+import { authCheck } from './store/actions/auth'
 import UserListPage from './views/components/pages/UserListPage'
 import NavBar from './views/components/NavBar'
 import NotFoundPage from './views/components/pages/NotFoundPage'
@@ -10,6 +11,12 @@ import ProtectedRoute from './views/components/common/ProtectedRoute'
 import LoginPage from './views/components/pages/LoginPage'
 
 function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(authCheck())
+  }, [])
+
   return (
     <>
       <ToastContainer />
