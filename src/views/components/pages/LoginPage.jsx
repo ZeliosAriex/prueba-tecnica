@@ -6,13 +6,28 @@ import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import Container from '../common/Container'
 import Col from '../common/Col'
+import { mediaQueries } from '../../../styles/mediaQueries'
+import Title from '../common/Title'
 // import { useForm } from 'react-hook-form'
 
 const StyledLoginPage = styled(Container).attrs({
-  className: 'mt-4',
+  className: 'mt-5',
 })`
   .title {
-    font-variant-caps: all-small-caps;
+    text-align: center;
+  }
+
+  button[type='submit'] {
+    display: block;
+    width: 100%;
+  }
+
+  @media ${mediaQueries.sm} {
+    margin-top: 0;
+    button[type='submit'] {
+      display: inline-block;
+      width: auto;
+    }
   }
 `
 
@@ -28,22 +43,28 @@ const LoginPage = () => {
   return (
     <StyledLoginPage>
       <Helmet title={t('documentHeadTitles.loginPage')} />
-      <Col sm={10} md={8} lg={6} className='m-auto'>
-        <h1 className='title'>Login</h1>
+      <Col sm={10} md={8} lg={5} className='m-auto'>
+        <Title className='title mb-4'>Iniciar sesión</Title>
         <form>
           <div className='form-group'>
             {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor='exampleInputEmail1'>Email address</label>
-            <input
-              type='email'
-              className='form-control'
-              id='exampleInputEmail1'
-              aria-describedby='emailHelp'
-            />
-            <small id='emailHelp' className='form-text text-muted'>
-              Nunca
-            </small>
+            <label htmlFor='emailInput'>Email address</label>
+            <input type='email' className='form-control' id='emailInput' />
           </div>
+
+          <div className='form-group'>
+            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
+            <label htmlFor='passwordInput'>Password</label>
+            <input
+              type='password'
+              className='form-control'
+              id='passwordInput'
+            />
+          </div>
+
+          <button type='submit' className='btn btn-primary mt-4'>
+            Submit
+          </button>
         </form>
       </Col>
     </StyledLoginPage>

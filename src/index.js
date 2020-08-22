@@ -3,8 +3,10 @@ import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter as Router } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
+import theme from './styles/theme'
 import createStore from './store'
 import './styles/index.scss'
 import './i18n' // Configuramos la i18n
@@ -16,13 +18,15 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <HelmetProvider>
-        <Router>
-          <Helmet
-            titleTemplate='%s | Prueba Técnica'
-            defaultTitle='Prueba Técnica'
-          />
-          <App />
-        </Router>
+        <ThemeProvider theme={theme}>
+          <Router>
+            <Helmet
+              titleTemplate='%s | Prueba Técnica'
+              defaultTitle='Prueba Técnica'
+            />
+            <App />
+          </Router>
+        </ThemeProvider>
       </HelmetProvider>
     </Provider>
   </React.StrictMode>,
