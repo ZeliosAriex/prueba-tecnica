@@ -10,10 +10,10 @@
   },
   "documentHeadTitles": {
     "userList": "User List",
+    "loginPage": "Login",
     "notFound": "Not Found"
   },
   "errorMessages": {
     "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users"
   }
 }
-
