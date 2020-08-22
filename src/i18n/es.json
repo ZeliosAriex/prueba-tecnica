@@ -10,6 +10,7 @@
   },
   "documentHeadTitles": {
     "userList": "Lista de Usuarios",
+    "loginPage": "Login",
     "notFound": "No Encontrado"
   },
   "errorMessages": {
