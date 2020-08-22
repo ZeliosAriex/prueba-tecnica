@@ -11,18 +11,16 @@ import styled from 'styled-components'
  si alguno de estos es 0 no se omite como nombre de clase
 */
 const getSizes = (xs, sm, md, lg, xl) => {
-  const sizes = [xs, sm, md, lg, xl]
-  const sizesNames = ['xs', 'sm', 'md', 'lg', 'xl']
+  const sizes = { xs, sm, md, lg, xl }
   const classNames = []
 
-  Object.keys(sizes).forEach((sizeKeys) =>
-    sizes[sizeKeys] !== 0
-      ? sizesNames[sizeKeys] === 'xs'
-        ? classNames.push(`col-${sizes[sizeKeys]}`)
-        : classNames.push(`col-${sizesNames[sizeKeys]}-${sizes[sizeKeys]}`)
-      : null
-  )
-
+  // eslint-disable-next-line no-restricted-syntax
+  for (const [key, value] of Object.entries(sizes)) {
+    if (value !== 0) {
+      if (key === 'xs') classNames.push(`col-${value}`)
+      else classNames.push(`col-${key}-${value}`)
+    }
+  }
   return classNames.join(' ')
 }
 
