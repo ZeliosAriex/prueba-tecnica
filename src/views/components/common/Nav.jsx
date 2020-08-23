@@ -10,6 +10,10 @@ const Nav = styled.nav.attrs(() => ({
     user-select: none;
   }
 
+  .navbar-brand {
+    display: flex;
+  }
+
   a {
     user-select: none;
   }

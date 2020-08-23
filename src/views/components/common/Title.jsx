@@ -4,6 +4,7 @@ import styled from 'styled-components'
 
 const StyledTitle = styled.div`
   font-variant-caps: all-small-caps;
+  user-select: none;
 `
 
 const Title = ({ h, className, children }) => {

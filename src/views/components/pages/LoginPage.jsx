@@ -24,7 +24,6 @@ const StyledLoginPage = styled(Container).attrs({
 
   .title {
     text-align: center;
-    user-select: none;
   }
 
   button[type='submit'] {
