@@ -32,7 +32,7 @@ const UsersTable = ({ users }) => {
 
   return (
     <div className='table-responsive'>
-      <table className='table table-sm table-striped table-hover shadow-light smallcaps'>
+      <table className='table table-striped table-hover shadow-light smallcaps'>
         <thead className='thead-dark'>
           <tr>{getTableHeaders(tableColumns)}</tr>
         </thead>
