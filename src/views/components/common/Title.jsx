@@ -5,6 +5,11 @@ import styled from 'styled-components'
 const StyledTitle = styled.div`
   font-variant-caps: all-small-caps;
   user-select: none;
+  
+  .title-icon {
+    width: 2rem;
+    margin-right: 1rem;
+  }
 `
 
 const Title = ({ h, className, children }) => {

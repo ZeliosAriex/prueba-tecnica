@@ -13,3 +13,17 @@ export const usersFetchSuccess = (users) => ({
     users,
   },
 })
+
+export const startUserFetch = (id) => ({
+  type: types.USERS_FETCH_REQUEST,
+  payload: {
+    id,
+  },
+})
+
+export const userFetchSuccess = (user) => ({
+  type: types.USER_FETCH_SUCCESS,
+  payload: {
+    user,
+  },
+})

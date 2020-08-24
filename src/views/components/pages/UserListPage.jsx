@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
+import Skeleton from 'react-loading-skeleton'
 import { startUsersFetch } from '../../../store/actions/user'
 import Col from '../common/Col'
 import UsersTable from '../UsersTable'
@@ -12,15 +14,11 @@ import MainContainer from '../common/MainContainer'
 
 const StyledUserListPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
-})`
-  .title-icon {
-    width: 2rem;
-    margin-right: 1rem;
-  }
-`
+})``
 
 const UserListPage = () => {
   const users = useSelector((state) => state.users)
+  const ui = useSelector((state) => state.ui)
   const dispatch = useDispatch()
   const { t } = useTranslation()
 
@@ -36,7 +34,11 @@ const UserListPage = () => {
           <img className='title-icon' src={userListSVG} alt='User List' />
           {t('pages.userList.title')}
         </Title>
-        <UsersTable users={users} />
+        {!ui.isLoading ? (
+          <UsersTable users={users} />
+        ) : (
+          <Skeleton count={7} height={38} className='mb-2' />
+        )}
       </Col>
     </StyledUserListPage>
   )

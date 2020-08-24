@@ -5,10 +5,15 @@ const initialState = {
     active: false,
     expanded: false,
   },
+  isLoading: false,
 }
 
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
+    case types.UI_IS_LOADING:
+      return { ...state, isLoading: true }
+    case types.UI_FINISHED_LOADING:
+      return { ...state, isLoading: false }
     case types.UI_MOBILE_NAVBAR_ACTIVATE:
       return {
         ...state,

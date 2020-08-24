@@ -31,6 +31,9 @@
         "userDetailsBtn": "User details"
       }
     },
+    "userDetails": {
+      "title": "User details"
+    },
     "notFound": {
       "title": "Oops, we didn't find anything up here"
     }
@@ -49,10 +52,12 @@
   },
   "documentHeadTitles": {
     "userList": "User List",
+    "userDetails": "User details",
     "loginPage": "Login",
     "notFound": "Not Found"
   },
   "errorMessages": {
-    "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users"
+    "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users",
+    "userFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve the user"
   }
 }
