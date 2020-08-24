@@ -10,7 +10,7 @@ export const apiCall = (method, endpoint, body) => {
   }
 
   /* Añadimos el delay en la llamada para simular que la API
-  tarda en responder un poco más */
+  *  tarda en responder un poco más */
   url.searchParams.set('delay', API_DELAY)
 
   if (method.toLowerCase() !== 'get' && body) {

@@ -81,5 +81,10 @@
   },
   "generic": {
     "fieldNotEmpty": "The field cannot be empty"
+  },
+  "toasts": {
+    "greetMessage": "\uD83D\uDC4B\uD83C\uDFFC Welcome {{firstAndLastName}}",
+    "userUpdated": "✔️ User updated successfully",
+    "userDeleted": "\uD83D\uDDD1️️ User deleted successfully"
   }
 }

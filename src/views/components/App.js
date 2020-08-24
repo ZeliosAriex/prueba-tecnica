@@ -2,12 +2,12 @@ import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import UserListPage from './views/components/pages/UserListPage'
-import NavBar from './views/components/NavBar'
-import NotFoundPage from './views/components/pages/NotFoundPage'
-import ProtectedRoute from './views/components/common/ProtectedRoute'
-import LoginPage from './views/components/pages/LoginPage'
-import UserDetailsPage from './views/components/pages/UserDetailsPage'
+import UserListPage from './pages/UserListPage'
+import NavBar from './NavBar'
+import NotFoundPage from './pages/NotFoundPage'
+import ProtectedRoute from './common/ProtectedRoute'
+import LoginPage from './pages/LoginPage'
+import UserDetailsPage from './pages/UserDetailsPage'
 
 function App() {
   return (

@@ -30,6 +30,10 @@ const StyledUsersTable = styled.div.attrs(() => ({
     }
   }
 
+  .w-10p {
+    width: 10%;
+  }
+
   .table th {
     color: #fff;
     background-color: ${(p) => p.theme.primary};

@@ -94,9 +94,9 @@ const UserDetailsPage = () => {
   const rollBackFormValues = () => {
     /* Si el usuario cancela la edición del formulario debemos recupar los valores
      * de los campos originales y asignarlos en su respectivo formulario */
-    setValue('firstName', user.first_name)
-    setValue('lastName', user.last_name)
-    setValue('email', user.email)
+    methods.setValue('firstName', user.first_name)
+    methods.setValue('lastName', user.last_name)
+    methods.setValue('email', user.email)
   }
 
   const handleDeleteUser = () => {

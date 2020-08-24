@@ -3,6 +3,7 @@ import { initReactI18next } from 'react-i18next'
 import englishTranslations from './en.json'
 import spanishTranslations from './es.json'
 
+// Cargamos las traducciones que se encuentran en los JSON
 const resources = {
   en: { translation: englishTranslations },
   es: { translation: spanishTranslations },

@@ -3,8 +3,8 @@ import * as types from '../../actions/auth/actionTypes'
 import { apiCall } from '../../util/apiCall'
 import { createErrorAction } from '../../util/createErrorAction'
 import { loginUserSuccess } from '../../actions/auth'
-
-// import { getT } from '../../util/getTranslation'
+import { getT } from '../../util/getTranslation'
+import { displayInfoToast } from '../../actions/toast'
 
 function* requestAuthLoginUser(action) {
   try {
@@ -21,8 +21,17 @@ function* requestAuthLoginUser(action) {
     const { token } = yield call([response, 'json'])
 
     // Guardamos el token en localStorage para poder mantener la sesión
+    const username = action.payload.email.split('@')[0]
+    // Capitalizar el nombre y apellidos para mostrarlo en una notificación
+    const firstAndLastName = username
+      .split('.')
+      .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+      .join(' ')
     localStorage.setItem('token', token)
-    localStorage.setItem('username', action.payload.email.split('@')[0])
+    localStorage.setItem('username', username)
+
+    // Mostrar un toast al usuario dandole la bienvenida
+    yield put(displayInfoToast(getT('toasts.greetMessage', { firstAndLastName })))
 
     yield put(loginUserSuccess(action.payload.email, token))
   } catch (e) {

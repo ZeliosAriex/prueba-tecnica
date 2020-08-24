@@ -5,6 +5,7 @@ import { createErrorAction } from '../../util/createErrorAction'
 import { userUpdateSuccess } from '../../actions/user'
 import { getT } from '../../util/getTranslation'
 import { uiFinishedLoading, uiIsLoading } from '../../actions/ui'
+import { displaySuccessToast } from '../../actions/toast'
 
 function* requestUserUpdate(action) {
   try {
@@ -19,6 +20,8 @@ function* requestUserUpdate(action) {
     let updatedUser = yield call([response, 'json'])
 
     updatedUser = { ...updatedUser, id: userId }
+
+    yield put(displaySuccessToast(getT('toasts.userUpdated')))
 
     yield put(userUpdateSuccess(updatedUser))
   } catch (e) {

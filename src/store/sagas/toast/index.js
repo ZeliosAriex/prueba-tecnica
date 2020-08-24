@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects'
-import toastDisplayError from './error'
+import toastDisplay from './toastDisplay'
 
 function* toastRootSaga() {
-  yield all([fork(toastDisplayError)])
+  yield all([fork(toastDisplay)])
 }
 
 export default toastRootSaga
