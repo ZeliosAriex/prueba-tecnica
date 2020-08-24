@@ -16,6 +16,7 @@ import {
 } from '../../store/actions/ui'
 import { ReactComponent as SpanishFlag } from '../../resources/images/spanish-flag.svg'
 import { ReactComponent as EnglishFlag } from '../../resources/images/english-flag.svg'
+import Button from './common/Button'
 
 const StyledNavBar = styled.nav.attrs(() => ({
   className: 'navbar navbar-expand-sm navbar-dark',
@@ -107,16 +108,15 @@ const NavBar = () => {
     dispatch(movileNavbarToggleExpand())
   }
 
-  const displayLogOutButton = () =>
+  const renderLogOutButton = () =>
     auth.isLoggedIn ? (
-      <button
+      <Button
         onClick={handleLogOutClick}
         className='btn btn-secondary btn-sm btn-sign-out'
-        type='button'
       >
         <img className='icon' src={signOutIcon} alt='Sign Out' />
         {t('navbar.logOutBtn')}
-      </button>
+      </Button>
     ) : null
 
   const switchLanguage = (lang) => i18n.changeLanguage(lang)
@@ -127,52 +127,54 @@ const NavBar = () => {
     return `navbar-collapse collapse ${expand}`
   }
 
+  const renderNavLinks = () => (
+    <ul className='navbar-nav mr-auto'>
+      <li>
+        <NavLink className='nav-item nav-link' to='/users'>
+          {t('navbar.navLinks.users')}
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink className='nav-item nav-link' to='/cualquier-cosa'>
+          {t('navbar.navLinks.nonexistent')}
+        </NavLink>
+      </li>
+    </ul>
+  )
+
+  const renderLangSwitchers = () => (
+    <div className='lang-changer'>
+      <Button
+        onClick={() => switchLanguage('es')}
+        className='btn btn-link'
+        title={t('navbar.languageSelectors.switchToSpanish')}
+      >
+        <SpanishFlag className='flag' />
+      </Button>
+      <Button
+        onClick={() => switchLanguage('en')}
+        className='btn btn-link'
+        title={t('navbar.languageSelectors.switchToEnglish')}
+      >
+        <EnglishFlag className='flag' />
+      </Button>
+    </div>
+  )
+
   return (
     <StyledNavBar auth={auth}>
       <Link className='navbar-brand' to='/'>
         <img className='logo' src={logo} alt='Logo' />
         {t('navbar.mainTitle')}
       </Link>
-      <button
-        onClick={handleMobileMenuToggle}
-        className='navbar-toggler'
-        type='button'
-      >
+      <Button className='navbar-toggler' onClick={handleMobileMenuToggle}>
         <img className='icon' src={hamburger} alt='Mobile menu toggler' />
-      </button>
+      </Button>
       <div className={getNavbarCollapseClasses()}>
-        <ul className='navbar-nav mr-auto'>
-          <li>
-            <NavLink className='nav-item nav-link' to='/users'>
-              {t('navbar.navLinks.users')}
-            </NavLink>
-          </li>
-
-          <li>
-            <NavLink className='nav-item nav-link' to='/cualquier-cosa'>
-              {t('navbar.navLinks.nonexistent')}
-            </NavLink>
-          </li>
-        </ul>
-        <div className='lang-changer'>
-          <button
-            onClick={() => switchLanguage('es')}
-            type='button'
-            className='btn btn-link'
-            title={t('navbar.languageSelectors.switchToSpanish')}
-          >
-            <SpanishFlag className='flag' />
-          </button>
-          <button
-            onClick={() => switchLanguage('en')}
-            type='button'
-            className='btn btn-link'
-            title={t('navbar.languageSelectors.switchToEnglish')}
-          >
-            <EnglishFlag className='flag' />
-          </button>
-        </div>
-        {displayLogOutButton()}
+        {renderNavLinks()}
+        {renderLangSwitchers()}
+        {renderLogOutButton()}
       </div>
     </StyledNavBar>
   )
