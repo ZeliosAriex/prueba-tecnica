@@ -1,0 +1,63 @@
+{
+  "greetMessage": "Welcome :D",
+  "pages": {
+    "login": {
+      "title": "Sign In",
+      "forms": {
+        "email": {
+          "label": "Email",
+          "errors": {
+            "required": "Email is required",
+            "invalid": "Invalid email address"
+          }
+        },
+        "password": {
+          "label": "Password",
+          "errors": {
+            "required": "Enter a password",
+            "minValue": "The password must be at least {{passwordMinLength}} characters"
+          }
+        },
+        "signInBtn": {
+          "label": "Sign In"
+        }
+      }
+    },
+    "userList": {
+      "title": "User List",
+      "table": {
+        "userFirstName": "First Name",
+        "userLastName": "Last Name",
+        "userDetailsBtn": "User details"
+      }
+    },
+    "userDetails": {
+      "title": "User details"
+    },
+    "notFound": {
+      "title": "Oops, we didn't find anything up here"
+    }
+  },
+  "navbar": {
+    "mainTitle": "Technical Test",
+    "navLinks": {
+      "users": "Users",
+      "nonexistent": "Non-existent"
+    },
+    "languageSelectors": {
+      "switchToSpanish": "Switch to Spanish",
+      "switchToEnglish": "Switch to English"
+    },
+    "logOutBtn": "Sign Out"
+  },
+  "documentHeadTitles": {
+    "userList": "User List",
+    "userDetails": "User details",
+    "loginPage": "Login",
+    "notFound": "Not Found"
+  },
+  "errorMessages": {
+    "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users",
+    "userFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve the user"
+  }
+}

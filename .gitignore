@@ -39,6 +39,12 @@ logs
 **/*.backup.*
 **/*.back.*
 
+### Environment ###
+.env*
+# Do not ignore this file
+!.env.example
+
+
 node_modules
 bower_components
 

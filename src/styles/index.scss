@@ -1,0 +1,70 @@
+// Importo solo que voy a necesitar de boostrap
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+@import '~bootstrap/scss/reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/forms';
+@import '~bootstrap/scss/buttons';
+@import '~bootstrap/scss/grid';
+@import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/navbar';
+@import '~bootstrap/scss/transitions';
+@import '~bootstrap/scss/tables';
+
+/*
+  ==== Media Queries ====
+
+  * Pantallas extra pequeñas (móviles) < 576px
+  * Pantallas pequeñas (_sm, tablets _en vertical) ≥ 576px
+  * Pantallas medianas (md, para tablets en horizontal)  ≥ 768px
+  * Pantallas grandes (lg, tamaño escritorio) ≥ 992px
+  * Pantallas extra grandes (xl, escritorio grande) ≥ 1200px
+
+  Me he basado en los breaks que tiene bootstrap 4 para mantener una consistencia,
+  para poder usarlas con styled-components he creado 2 archivos donde almacenar
+  dicha información:
+
+  * sizes:        contiene los tamaños de los dispositivos
+
+  * mediaQueries: contiene los mediaQueries (min-width) para poder usarlos
+                  dentro de styled-components, usando mobile first styling
+*/
+
+// ==== ESTILOS GLOBALES ====
+body {
+  margin: 0;
+  background: #f9f9f9;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.normalcaps {
+  font-variant-caps: normal;
+}
+
+.smallcaps {
+  font-variant-caps: all-small-caps;
+}
+
+.shadow-light {
+  box-shadow: 0 0 8px #0000001a;
+}
+
+.w-10p {
+  width: 10%;
+}
+
+// ==== Clases utilitarias de desarrollo ====
+.bg-debug {
+  background: #ff9e9e;
+}

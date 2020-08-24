@@ -10,8 +10,8 @@ function* toastDisplayError(action) {
   yield call(toast.error, action.payload.message, errorToastOptions)
 }
 
-function* mySaga() {
+function* watcher() {
   yield takeLatest('TOAST_DISPLAY_ERROR', toastDisplayError)
 }
 
-export default mySaga
+export default watcher

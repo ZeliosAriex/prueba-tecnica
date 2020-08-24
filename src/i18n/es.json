@@ -1,0 +1,63 @@
+{
+  "greetMessage": "Bienvenido :D",
+  "pages": {
+    "login": {
+      "title": "Iniciar sesión",
+      "forms": {
+        "email": {
+          "label": "Correo Electrónico",
+          "errors": {
+            "required": "Se requiere la dirección de correo electrónico",
+            "invalid": "Correo electrónico inválido"
+          }
+        },
+        "password": {
+          "label": "Contraseña",
+          "errors": {
+            "required": "Se requiere la contraseña",
+            "minValue": "La contraseña debe ser mínimo de {{passwordMinLength}} caracteres"
+          }
+        },
+        "signInBtn": {
+          "label": "Iniciar sesión"
+        }
+      }
+    },
+    "userList": {
+      "title": "Lista de Usuarios",
+      "table": {
+        "userFirstName": "Nombre",
+        "userLastName": "Apellidos",
+        "userDetailsBtn": "Detalles del usuario"
+      }
+    },
+    "userDetails": {
+      "title": "Detalles del usuario"
+    },
+    "notFound": {
+      "title": "Oops, no encontramos nada por aquí arriba"
+    }
+  },
+  "navbar": {
+    "mainTitle": "Prueba Técnica",
+    "navLinks": {
+      "users": "Usuarios",
+      "nonexistent": "Inexistente"
+    },
+    "languageSelectors": {
+      "switchToSpanish": "Cambiar a Castellano",
+      "switchToEnglish": "Cambiar a Inglés"
+    },
+    "logOutBtn": "Salir"
+  },
+  "documentHeadTitles": {
+    "userList": "Lista de Usuarios",
+    "userDetails": "Detalles del usuario",
+    "loginPage": "Iniciar Sesión",
+    "notFound": "No Encontrado"
+  },
+  "errorMessages": {
+    "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios",
+    "userFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar el usuario"
+  }
+}

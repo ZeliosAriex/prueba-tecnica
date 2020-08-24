@@ -1,10 +1,11 @@
-import { USERS_FETCH_SUCCESS } from '../actions/user/actionTypes'
+import * as types from '../actions/user/actionTypes'
 
 const userReducer = (state = [], action) => {
   switch (action.type) {
-    case USERS_FETCH_SUCCESS:
+    case types.USERS_FETCH_SUCCESS:
       return [...action.payload.users]
-
+    case types.USER_FETCH_SUCCESS:
+      return [{ ...action.payload.user }]
     default:
       return state
   }
