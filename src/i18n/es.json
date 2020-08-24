@@ -3,7 +3,7 @@
   "pages": {
     "login": {
       "title": "Iniciar sesión",
-      "forms": {
+      "form": {
         "email": {
           "label": "Correo Electrónico",
           "errors": {
@@ -32,10 +32,27 @@
       }
     },
     "userDetails": {
-      "title": "Detalles del usuario"
+      "title": "Detalles del usuario",
+      "form": {
+        "firstName": {
+          "label": "Nombre"
+        },
+        "lastName": {
+          "label": "Apellidos"
+        },
+        "email": {
+          "label": "Correo Electrónico"
+        }
+      },
+      "editBtn": "Editar",
+      "cancelBtn": "Cancelar",
+      "updateBtn": "Actualizar",
+      "deleteBtn": "Borrar",
+      "goBackBtn": "Atrás"
     },
     "notFound": {
-      "title": "Oops, no encontramos nada por aquí arriba"
+      "title": "Oops, no encontramos nada por aquí arriba",
+      "goBackBtn": "Volver para estar a salvo"
     }
   },
   "navbar": {
@@ -58,6 +75,11 @@
   },
   "errorMessages": {
     "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios",
-    "userFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar el usuario"
+    "userFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar el usuario",
+    "userUpdateFailed": "\uD83D\uDE25 Ha habido un problema al intentar actualizar el usuario",
+    "userDeleteFailed": "\uD83D\uDE25 Ha habido un problema al intentar borrar el usuario"
+  },
+  "generic": {
+    "fieldNotEmpty": "El campo no puede estar vacío"
   }
 }

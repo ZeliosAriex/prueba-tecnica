@@ -3,7 +3,7 @@
   "pages": {
     "login": {
       "title": "Sign In",
-      "forms": {
+      "form": {
         "email": {
           "label": "Email",
           "errors": {
@@ -32,10 +32,27 @@
       }
     },
     "userDetails": {
-      "title": "User details"
+      "title": "User details",
+      "form": {
+        "firstName": {
+          "label":"First Name"
+        },
+        "lastName": {
+          "label":"Last Name"
+        },
+        "email": {
+          "label":"Email Address"
+        }
+      },
+      "editBtn": "Edit",
+      "cancelBtn": "Cancel",
+      "updateBtn": "Update",
+      "deleteBtn": "Delete",
+      "goBackBtn": "Back"
     },
     "notFound": {
-      "title": "Oops, we didn't find anything up here"
+      "title": "Oops, we didn't find anything up here",
+      "goBackBtn": "Return to a safe place"
     }
   },
   "navbar": {
@@ -58,6 +75,11 @@
   },
   "errorMessages": {
     "usersFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve users",
-    "userFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve the user"
+    "userFetchFailed": "\uD83D\uDE25 There was a problem trying to retrieve the user",
+    "userUpdateFailed": "\uD83D\uDE25 There was a problem trying to update the user",
+    "userDeleteFailed": "\uD83D\uDE25 There was a problem trying to delete the user"
+  },
+  "generic": {
+    "fieldNotEmpty": "The field cannot be empty"
   }
 }

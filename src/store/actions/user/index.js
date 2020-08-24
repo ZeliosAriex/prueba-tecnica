@@ -27,3 +27,32 @@ export const userFetchSuccess = (user) => ({
     user,
   },
 })
+
+export const startUserUpdate = (user) => ({
+  type: types.USER_UPDATE_REQUEST,
+  payload: {
+    user,
+  },
+})
+
+export const userUpdateSuccess = (user) => ({
+  type: types.USER_UPDATE_SUCCESS,
+  payload: {
+    user,
+  },
+})
+
+export const startUserDelete = (id, history) => ({
+  type: types.USER_DELETE_REQUEST,
+  payload: {
+    id,
+  },
+  history
+})
+
+export const userDeleteSuccess = (id) => ({
+  type: types.USER_DELETE_SUCCESS,
+  payload: {
+    id,
+  },
+})
