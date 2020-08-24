@@ -5,14 +5,14 @@ import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
 import { useForm } from 'react-hook-form'
-import Container from '../common/Container'
 import Col from '../common/Col'
 import { mediaQueries } from '../../../styles/mediaQueries'
 import Title from '../common/Title'
 import { startLoginUser } from '../../../store/actions/auth'
 import loginIcon from '../../../resources/images/people.svg'
+import MainContainer from '../common/MainContainer'
 
-const StyledLoginPage = styled(Container).attrs({
+const StyledLoginPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
 })`
   .page-icon {
@@ -39,24 +39,6 @@ const StyledLoginPage = styled(Container).attrs({
     }
   }
 `
-// Para la validación de los campos del formulario
-const passwordMinLength = 4
-const fieldOptions = {
-  email: {
-    required: 'Se requiere la dirección de correo electrónico',
-    pattern: {
-      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-      message: 'Correo electrónico inválido',
-    },
-  },
-  password: {
-    required: 'Se requiere la contraseña',
-    minLength: {
-      value: passwordMinLength,
-      message: `La contraseña debe ser mínimo de ${passwordMinLength} caracteres`,
-    },
-  },
-}
 
 const LoginPage = () => {
   const auth = useSelector((state) => state.auth)
@@ -71,21 +53,43 @@ const LoginPage = () => {
     dispatch(startLoginUser(email, password))
   }
 
+  // Para la validación de los campos del formulario
+  const passwordMinLength = 4
+  const fieldOptions = {
+    email: {
+      required: t('pages.login.forms.email.errors.required'),
+      pattern: {
+        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+        message: t('pages.login.forms.email.errors.invalid'),
+      },
+    },
+    password: {
+      required: t('pages.login.forms.password.errors.required'),
+      minLength: {
+        value: passwordMinLength,
+        message: t('pages.login.forms.password.errors.minValue', {
+          passwordMinLength,
+        }),
+      },
+    },
+  }
+
   // TODO: Separar los input en sus propios componentes (Input)
   return (
     <StyledLoginPage>
       <Helmet title={t('documentHeadTitles.loginPage')} />
       <Col sm={10} md={8} lg={5} className='m-auto'>
         <img className='page-icon' src={loginIcon} alt='Lock' />
-        <Title className='title mb-5'>Iniciar sesión</Title>
+        <Title className='title mb-5'>{t('pages.login.title')}</Title>
         <form
           className='needs-validation'
           onSubmit={handleSubmit(onSubmit)}
           noValidate
         >
           <div className='form-group'>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor='emailInput'>Correo Electrónico</label>
+            <label htmlFor='emailInput'>
+              {t('pages.login.forms.email.label')}
+            </label>
             <input
               name='email'
               type='email'
@@ -101,8 +105,9 @@ const LoginPage = () => {
           </div>
 
           <div className='form-group'>
-            {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-            <label htmlFor='passwordInput'>Password</label>
+            <label htmlFor='passwordInput'>
+              {t('pages.login.forms.password.label')}
+            </label>
             <input
               name='password'
               type='password'
@@ -118,7 +123,7 @@ const LoginPage = () => {
           </div>
 
           <button type='submit' className='btn btn-primary mt-4'>
-            Iniciar Sesión
+            {t('pages.login.forms.signInBtn.label')}
           </button>
         </form>
       </Col>

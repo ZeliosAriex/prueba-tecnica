@@ -10,7 +10,9 @@
     "bootstrap": "^4.5.2",
     "eslint-config-airbnb": "^18.2.0",
     "i18next": "^19.7.0",
+    "lodash.debounce": "^4.0.8",
     "node-sass": "^4.14.1",
+    "polished": "^3.6.5",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -63,7 +65,8 @@
       "no-confusing-arrow": 0,
       "implicit-arrow-linebreak": 0,
       "nonblock-statement-body-position": 0,
-      "react/forbid-prop-types": 0
+      "react/forbid-prop-types": 0,
+      "curly": 0
     }
   },
   "browserslist": {

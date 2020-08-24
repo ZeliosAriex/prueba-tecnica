@@ -8,9 +8,10 @@ import Col from '../common/Col'
 import UsersTable from '../UsersTable'
 import Title from '../common/Title'
 import userListSVG from '../../../resources/images/user-list.svg'
+import MainContainer from '../common/MainContainer'
 
-const StyledUserListPage = styled.div.attrs({
-  className: 'mt-5',
+const StyledUserListPage = styled(MainContainer).attrs({
+  className: 'mt-5 mb-5',
 })`
   .title-icon {
     width: 2rem;
@@ -30,10 +31,10 @@ const UserListPage = () => {
   return (
     <StyledUserListPage>
       <Helmet title={t('documentHeadTitles.userList')} />
-      <Col sm={12} md={10} lg={8} xl={7} className='m-auto'>
+      <Col md={10} lg={8} xl={9} className='m-auto'>
         <Title className='mb-4'>
           <img className='title-icon' src={userListSVG} alt='User List' />
-          Lista de Usuarios
+          {t('pages.userList.title')}
         </Title>
         <UsersTable users={users} />
       </Col>

@@ -1,8 +1,8 @@
-import { size } from './sizes'
+import sizes from './sizes'
 
 export const mediaQueries = {
-  sm: `(min-width: ${size.sm})`,
-  md: `(min-width: ${size.md})`,
-  lg: `(min-width: ${size.lg})`,
-  xl: `(min-width: ${size.xl})`,
+  sm: `(min-width: ${sizes.sm})`,
+  md: `(min-width: ${sizes.md})`,
+  lg: `(min-width: ${sizes.lg})`,
+  xl: `(min-width: ${sizes.xl})`,
 }
