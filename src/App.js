@@ -1,28 +1,22 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
-import { useDispatch } from 'react-redux'
 import 'react-toastify/dist/ReactToastify.css'
-import { authCheck } from './store/actions/auth'
 import UserListPage from './views/components/pages/UserListPage'
 import NavBar from './views/components/NavBar'
 import NotFoundPage from './views/components/pages/NotFoundPage'
 import ProtectedRoute from './views/components/common/ProtectedRoute'
 import LoginPage from './views/components/pages/LoginPage'
+import UserDetailsPage from './views/components/pages/UserDetailsPage'
 
 function App() {
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(authCheck())
-  }, [])
-
   return (
     <>
       <ToastContainer />
       <NavBar />
       <Switch>
         <Route path='/login' component={LoginPage} />
+        <ProtectedRoute path='/users/:id' component={UserDetailsPage} />
         <ProtectedRoute path='/users' component={UserListPage} />
         <Route path='/not-found' component={NotFoundPage} />
         <Redirect exact from='/' to='/users' />

@@ -9,10 +9,15 @@ import * as serviceWorker from './serviceWorker'
 import theme from './styles/theme'
 import createStore from './store'
 import './styles/index.scss'
-import './i18n' // Configuramos la i18n
+import './i18n'
+import { authCheck } from './store/actions/auth' // Configuramos la i18n
 
 // Store centralizado de redux
 const store = createStore()
+
+/* Hay que comprobar la autenticación lo antes posible, de lo contrario las rutas
+   no procesarán correctamente el estado de autenticación al no estar actualizado */
+store.dispatch(authCheck())
 
 ReactDOM.render(
   <React.StrictMode>
