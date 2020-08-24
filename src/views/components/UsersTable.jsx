@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import { ReactComponent as InfoIcon } from '../../resources/images/info-square-fill.svg'
 
 const StyledUsersTable = styled.div.attrs(() => ({
@@ -44,14 +45,14 @@ const UsersTable = ({ users }) => {
     {
       key: 'details',
       content: (entry) => (
-        <button
+        <Link
+          to={`/users/${entry.id}`}
           className='btn-table btn btn-link btn-block'
           key={entry.id}
-          type='button'
           title={t('pages.userList.table.userDetailsBtn')}
         >
           <InfoIcon className='icon' title='Detalles del usuario' />
-        </button>
+        </Link>
       ),
     },
   ]
