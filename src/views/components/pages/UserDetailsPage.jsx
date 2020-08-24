@@ -12,7 +12,11 @@ import MainContainer from '../common/MainContainer'
 import Col from '../common/Col'
 import { mediaQueries } from '../../../styles/mediaQueries'
 import userDetailsIcon from '../../../resources/images/user-details.svg'
-import { startUserDelete, startUserFetch, startUserUpdate } from '../../../store/actions/user'
+import {
+  startUserDelete,
+  startUserFetch,
+  startUserUpdate,
+} from '../../../store/actions/user'
 
 const StyledUserDetailsPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
@@ -30,30 +34,30 @@ const StyledUserDetailsPage = styled(MainContainer).attrs({
 
   .btn {
     width: 100%;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
   }
 
   @media ${mediaQueries.sm} {
     .back-btn {
       width: auto;
     }
-    
+
     .btn {
-    width: auto;
-    margin-bottom: 0;
-  }
+      width: auto;
+      margin-bottom: 0;
+    }
   }
 `
 
 const UserDetailsPage = () => {
   const { id } = useParams()
-  const history = useHistory();
+  const history = useHistory()
   const users = useSelector((state) => state.users)
   const ui = useSelector((state) => state.ui)
   const [isFormEditable, setIsFormEditable] = useState(false)
   const dispatch = useDispatch()
   const {
-    handleSubmit, register, setValue, errors,
+    handleSubmit, register, setValue, errors
   } = useForm()
   const { t } = useTranslation()
   // eslint-disable-next-line no-unused-vars
@@ -113,6 +117,7 @@ const UserDetailsPage = () => {
     }
 
     dispatch(startUserUpdate(userToUpdate))
+    setIsFormEditable(false)
   }
 
   const renderFormEditButtons = () => {
@@ -123,7 +128,7 @@ const UserDetailsPage = () => {
           type='button'
           className='btn btn-primary'
         >
-          { t('pages.userDetails.editBtn') }
+          {t('pages.userDetails.editBtn')}
         </button>
       )
 
@@ -134,15 +139,19 @@ const UserDetailsPage = () => {
           type='button'
           className='btn btn-secondary mr-2'
         >
-          { t('pages.userDetails.cancelBtn') }
+          {t('pages.userDetails.cancelBtn')}
         </button>
 
         <button type='submit' className='btn btn-warning'>
-          { t('pages.userDetails.updateBtn') }
+          {t('pages.userDetails.updateBtn')}
         </button>
 
-        <button onClick={handleDeleteUser} type='button' className='btn btn-danger float-right'>
-          { t('pages.userDetails.deleteBtn') }
+        <button
+          onClick={handleDeleteUser}
+          type='button'
+          className='btn btn-danger float-right'
+        >
+          {t('pages.userDetails.deleteBtn')}
         </button>
       </div>
     )
@@ -160,9 +169,9 @@ const UserDetailsPage = () => {
           <form onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className='form-row'>
               <div className='form-group col-sm-6'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label htmlFor='firstNameInput'>
-                  { t('pages.userDetails.form.firstName.label') }
+                  {t('pages.userDetails.form.firstName.label')}
                 </label>
                 <input
                   defaultValue={user.first_name}
@@ -173,17 +182,17 @@ const UserDetailsPage = () => {
                   disabled={!isFormEditable}
                   ref={register(fieldOptions.firstName)}
                 />
-                { errors.firstName && (
+                {errors.firstName && (
                   <div className='invalid-feedback d-block'>
-                    { errors.firstName.message }
+                    {errors.firstName.message}
                   </div>
-                ) }
+                )}
               </div>
 
               <div className='form-group col-sm-6'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label htmlFor='lastNameInput'>
-                  { t('pages.userDetails.form.lastName.label') }
+                  {t('pages.userDetails.form.lastName.label')}
                 </label>
                 <input
                   defaultValue={user.last_name}
@@ -194,19 +203,19 @@ const UserDetailsPage = () => {
                   disabled={!isFormEditable}
                   ref={register(fieldOptions.lastName)}
                 />
-                { errors.lastName && (
+                {errors.lastName && (
                   <div className='invalid-feedback d-block'>
-                    { errors.lastName.message }
+                    {errors.lastName.message}
                   </div>
-                ) }
+                )}
               </div>
             </div>
 
             <div className='form-row'>
               <div className='form-group col-sm-12'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */ }
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label htmlFor='emailInput'>
-                  { t('pages.userDetails.form.email.label') }
+                  {t('pages.userDetails.form.email.label')}
                 </label>
                 <input
                   defaultValue={user.email}
@@ -217,19 +226,19 @@ const UserDetailsPage = () => {
                   disabled={!isFormEditable}
                   ref={register(fieldOptions.email)}
                 />
-                { errors.email && (
+                {errors.email && (
                   <div className='invalid-feedback d-block'>
-                    { errors.email.message }
+                    {errors.email.message}
                   </div>
-                ) }
+                )}
               </div>
             </div>
 
-            { renderFormEditButtons() }
+            {renderFormEditButtons()}
           </form>
 
           <Link className='btn btn-info back-btn mt-5' to='/users'>
-            { t('pages.userDetails.goBackBtn') }
+            {t('pages.userDetails.goBackBtn')}
           </Link>
         </>
       )
@@ -244,7 +253,7 @@ const UserDetailsPage = () => {
         />
         <Skeleton count={4} height={38} className='mb-5' />
         <Link className='btn btn-info back-btn' to='/users'>
-          { t('pages.userDetails.goBackBtn') }
+          {t('pages.userDetails.goBackBtn')}
         </Link>
       </div>
     )
@@ -260,9 +269,9 @@ const UserDetailsPage = () => {
             src={userDetailsIcon}
             alt='User Details'
           />
-          { t('pages.userDetails.title') }
+          {t('pages.userDetails.title')}
         </Title>
-        { renderForm(user) }
+        {renderForm(user)}
       </Col>
     </StyledUserDetailsPage>
   )
