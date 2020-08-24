@@ -42,11 +42,12 @@ export const userUpdateSuccess = (user) => ({
   },
 })
 
-export const startUserDelete = (id) => ({
+export const startUserDelete = (id, history) => ({
   type: types.USER_DELETE_REQUEST,
   payload: {
     id,
   },
+  history
 })
 
 export const userDeleteSuccess = (id) => ({

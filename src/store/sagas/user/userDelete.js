@@ -15,8 +15,10 @@ function* requestUserDelete(action) {
     const endpoint = `/users/${userId}`
     const response = yield call(apiCall, 'DELETE', endpoint)
 
-    if (response.status === 204) yield put(userDeleteSuccess(userId))
-    else throw new Error(getT('errorMessages.userDeleteFailed'))
+    if (response.status === 204) {
+      yield put(userDeleteSuccess(userId))
+      action.history.push('/')
+    } else throw new Error(getT('errorMessages.userDeleteFailed'))
   } catch (e) {
     yield put(
       createErrorAction(

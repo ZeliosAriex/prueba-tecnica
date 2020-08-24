@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
@@ -47,6 +47,7 @@ const StyledUserDetailsPage = styled(MainContainer).attrs({
 
 const UserDetailsPage = () => {
   const { id } = useParams()
+  const history = useHistory();
   const users = useSelector((state) => state.users)
   const ui = useSelector((state) => state.ui)
   const [isFormEditable, setIsFormEditable] = useState(false)
@@ -95,7 +96,7 @@ const UserDetailsPage = () => {
   }
 
   const handleDeleteUser = () => {
-    dispatch(startUserDelete(parseInt(id, 10)))
+    dispatch(startUserDelete(parseInt(id, 10), history))
   }
 
   const handleCancelEditForm = () => {
