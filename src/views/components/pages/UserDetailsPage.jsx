@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams, useHistory } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { Helmet } from 'react-helmet-async'
-import { useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import Skeleton from 'react-loading-skeleton'
 import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
@@ -17,6 +17,7 @@ import {
   startUserFetch,
   startUserUpdate,
 } from '../../../store/actions/user'
+import Input from '../common/Input'
 
 const StyledUserDetailsPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
@@ -52,6 +53,7 @@ const StyledUserDetailsPage = styled(MainContainer).attrs({
 const UserDetailsPage = () => {
   const { id } = useParams()
   const history = useHistory()
+  const methods = useForm()
   const users = useSelector((state) => state.users)
   const ui = useSelector((state) => state.ui)
   const [isFormEditable, setIsFormEditable] = useState(false)
@@ -166,77 +168,46 @@ const UserDetailsPage = () => {
             src={user.avatar}
             alt='User profile'
           />
-          <form onSubmit={handleSubmit(onSubmit)} noValidate>
-            <div className='form-row'>
-              <div className='form-group col-sm-6'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor='firstNameInput'>
-                  {t('pages.userDetails.form.firstName.label')}
-                </label>
-                <input
-                  defaultValue={user.first_name}
-                  name='firstName'
-                  type='text'
-                  className={`form-control ${errors.firstName && 'is-invalid'}`}
-                  id='firstNameInput'
-                  disabled={!isFormEditable}
-                  ref={register(fieldOptions.firstName)}
-                />
-                {errors.firstName && (
-                  <div className='invalid-feedback d-block'>
-                    {errors.firstName.message}
-                  </div>
-                )}
+          {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
+              <div className='form-row'>
+                <div className='form-group col-sm-6'>
+                  <Input
+                    name='firstName'
+                    label={t('pages.userDetails.form.firstName.label')}
+                    defaultValue={user.first_name}
+                    disabled={!isFormEditable}
+                    rules={fieldOptions.firstName}
+                  />
+                </div>
+
+                <div className='form-group col-sm-6'>
+                  <Input
+                    name='lastName'
+                    label={t('pages.userDetails.form.lastName.label')}
+                    defaultValue={user.last_name}
+                    disabled={!isFormEditable}
+                    rules={fieldOptions.lastName}
+                  />
+                </div>
               </div>
 
-              <div className='form-group col-sm-6'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor='lastNameInput'>
-                  {t('pages.userDetails.form.lastName.label')}
-                </label>
-                <input
-                  defaultValue={user.last_name}
-                  name='lastName'
-                  type='text'
-                  className={`form-control ${errors.lastName && 'is-invalid'}`}
-                  id='lastNameInput'
-                  disabled={!isFormEditable}
-                  ref={register(fieldOptions.lastName)}
-                />
-                {errors.lastName && (
-                  <div className='invalid-feedback d-block'>
-                    {errors.lastName.message}
-                  </div>
-                )}
+              <div className='form-row'>
+                <div className='form-group col-sm-12'>
+                  <Input
+                    name='email'
+                    label={t('pages.userDetails.form.email.label')}
+                    defaultValue={user.email}
+                    disabled={!isFormEditable}
+                    rules={fieldOptions.email}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className='form-row'>
-              <div className='form-group col-sm-12'>
-                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
-                <label htmlFor='emailInput'>
-                  {t('pages.userDetails.form.email.label')}
-                </label>
-                <input
-                  defaultValue={user.email}
-                  name='email'
-                  type='email'
-                  className={`form-control ${errors.email && 'is-invalid'}`}
-                  id='emailInput'
-                  disabled={!isFormEditable}
-                  ref={register(fieldOptions.email)}
-                />
-                {errors.email && (
-                  <div className='invalid-feedback d-block'>
-                    {errors.email.message}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {renderFormEditButtons()}
-          </form>
-
+              {renderFormEditButtons()}
+            </form>
+          </FormProvider>
           <Link className='btn btn-info back-btn mt-5' to='/users'>
             {t('pages.userDetails.goBackBtn')}
           </Link>
