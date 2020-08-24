@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
+import { SkeletonTheme } from 'react-loading-skeleton'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 import theme from './styles/theme'
@@ -24,13 +25,15 @@ ReactDOM.render(
     <Provider store={store}>
       <HelmetProvider>
         <ThemeProvider theme={theme}>
-          <Router>
-            <Helmet
-              titleTemplate='%s | Prueba Técnica'
-              defaultTitle='Prueba Técnica'
-            />
-            <App />
-          </Router>
+          <SkeletonTheme color='#d6dbde' highlightColor='#e4e8ea'>
+            <Router>
+              <Helmet
+                titleTemplate='%s | Prueba Técnica'
+                defaultTitle='Prueba Técnica'
+              />
+              <App />
+            </Router>
+          </SkeletonTheme>
         </ThemeProvider>
       </HelmetProvider>
     </Provider>

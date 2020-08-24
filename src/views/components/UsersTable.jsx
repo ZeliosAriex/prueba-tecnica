@@ -14,6 +14,7 @@ const StyledUsersTable = styled.div.attrs(() => ({
     justify-content: center;
 
     .icon {
+      display: block;
       width: 1.375rem;
 
       path {

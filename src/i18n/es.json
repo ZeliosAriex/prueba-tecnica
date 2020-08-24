@@ -31,6 +31,9 @@
         "userDetailsBtn": "Detalles del usuario"
       }
     },
+    "userDetails": {
+      "title": "Detalles del usuario"
+    },
     "notFound": {
       "title": "Oops, no encontramos nada por aquí arriba"
     }
@@ -49,10 +52,12 @@
   },
   "documentHeadTitles": {
     "userList": "Lista de Usuarios",
+    "userDetails": "Detalles del usuario",
     "loginPage": "Iniciar Sesión",
     "notFound": "No Encontrado"
   },
   "errorMessages": {
-    "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios"
+    "usersFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar los usuarios",
+    "userFetchFailed": "\uD83D\uDE25 Ha habido un problema al intentar recuperar el usuario"
   }
 }
