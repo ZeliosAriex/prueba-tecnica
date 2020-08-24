@@ -65,7 +65,7 @@ const StyledNavBar = styled.nav.attrs(() => ({
   }
 
   .lang-changer {
-    margin-right: 2rem;
+    margin-right: ${(p) => (p.auth.isLoggedIn ? 2 : 0)}rem;
 
     button {
       padding: 0;
@@ -128,7 +128,7 @@ const NavBar = () => {
   }
 
   return (
-    <StyledNavBar>
+    <StyledNavBar auth={auth}>
       <Link className='navbar-brand' to='/'>
         <img className='logo' src={logo} alt='Logo' />
         {t('navbar.mainTitle')}
