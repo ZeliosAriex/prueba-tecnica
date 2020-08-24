@@ -57,17 +57,17 @@ const LoginPage = () => {
   const passwordMinLength = 4
   const fieldOptions = {
     email: {
-      required: t('pages.login.forms.email.errors.required'),
+      required: t('pages.login.form.email.errors.required'),
       pattern: {
         value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        message: t('pages.login.forms.email.errors.invalid'),
+        message: t('pages.login.form.email.errors.invalid'),
       },
     },
     password: {
-      required: t('pages.login.forms.password.errors.required'),
+      required: t('pages.login.form.password.errors.required'),
       minLength: {
         value: passwordMinLength,
-        message: t('pages.login.forms.password.errors.minValue', {
+        message: t('pages.login.form.password.errors.minValue', {
           passwordMinLength,
         }),
       },
@@ -88,7 +88,7 @@ const LoginPage = () => {
         >
           <div className='form-group'>
             <label htmlFor='emailInput'>
-              {t('pages.login.forms.email.label')}
+              {t('pages.login.form.email.label')}
             </label>
             <input
               name='email'
@@ -106,7 +106,7 @@ const LoginPage = () => {
 
           <div className='form-group'>
             <label htmlFor='passwordInput'>
-              {t('pages.login.forms.password.label')}
+              {t('pages.login.form.password.label')}
             </label>
             <input
               name='password'
@@ -123,7 +123,7 @@ const LoginPage = () => {
           </div>
 
           <button type='submit' className='btn btn-primary mt-4'>
-            {t('pages.login.forms.signInBtn.label')}
+            {t('pages.login.form.signInBtn.label')}
           </button>
         </form>
       </Col>
