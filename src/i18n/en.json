@@ -51,7 +51,8 @@
       "goBackBtn": "Back"
     },
     "notFound": {
-      "title": "Oops, we didn't find anything up here"
+      "title": "Oops, we didn't find anything up here",
+      "goBackBtn": "Return to a safe place"
     }
   },
   "navbar": {
