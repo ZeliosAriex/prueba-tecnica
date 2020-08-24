@@ -4,13 +4,14 @@ import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { Helmet } from 'react-helmet-async'
 import { useTranslation } from 'react-i18next'
-import { useForm } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 import Col from '../common/Col'
 import { mediaQueries } from '../../../styles/mediaQueries'
 import Title from '../common/Title'
 import { startLoginUser } from '../../../store/actions/auth'
 import loginIcon from '../../../resources/images/people.svg'
 import MainContainer from '../common/MainContainer'
+import Input from '../common/Input'
 
 const StyledLoginPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
@@ -43,7 +44,7 @@ const StyledLoginPage = styled(MainContainer).attrs({
 const LoginPage = () => {
   const auth = useSelector((state) => state.auth)
   const dispatch = useDispatch()
-  const { register, handleSubmit, errors } = useForm()
+  const methods = useForm()
   const { t } = useTranslation()
   /* Si estamos logeados no hay necesidad de mostrar la pagina de login
   por lo cual redireccionamos */
@@ -74,58 +75,39 @@ const LoginPage = () => {
     },
   }
 
-  // TODO: Separar los input en sus propios componentes (Input)
   return (
     <StyledLoginPage>
       <Helmet title={t('documentHeadTitles.loginPage')} />
       <Col sm={10} md={8} lg={5} className='m-auto'>
         <img className='page-icon' src={loginIcon} alt='Lock' />
         <Title className='title mb-5'>{t('pages.login.title')}</Title>
-        <form
-          className='needs-validation'
-          onSubmit={handleSubmit(onSubmit)}
-          noValidate
-        >
-          <div className='form-group'>
-            <label htmlFor='emailInput'>
-              {t('pages.login.form.email.label')}
-            </label>
-            <input
-              name='email'
-              type='email'
-              className={`form-control ${errors.email && 'is-invalid'}`}
-              id='emailInput'
-              ref={register(fieldOptions.email)}
-            />
-            {errors.email && (
-              <div className='invalid-feedback d-block'>
-                {errors.email.message}
-              </div>
-            )}
-          </div>
 
-          <div className='form-group'>
-            <label htmlFor='passwordInput'>
-              {t('pages.login.form.password.label')}
-            </label>
-            <input
-              name='password'
-              type='password'
-              className={`form-control ${errors.password && 'is-invalid'}`}
-              id='passwordInput'
-              ref={register(fieldOptions.password)}
-            />
-            {errors.password && (
-              <div className='invalid-feedback d-block'>
-                {errors.password.message}
-              </div>
-            )}
-          </div>
+        {/* eslint-disable-next-line react/jsx-props-no-spreading */}
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)} noValidate>
+            <div className='form-group'>
+              <Input
+                name='email'
+                type='email'
+                label={t('pages.login.form.email.label')}
+                rules={fieldOptions.email}
+              />
+            </div>
 
-          <button type='submit' className='btn btn-primary mt-4'>
-            {t('pages.login.form.signInBtn.label')}
-          </button>
-        </form>
+            <div className='form-group'>
+              <Input
+                name='password'
+                type='password'
+                label={t('pages.login.form.password.label')}
+                rules={fieldOptions.password}
+              />
+            </div>
+
+            <button type='submit' className='btn btn-primary mt-4'>
+              {t('pages.login.form.signInBtn.label')}
+            </button>
+          </form>
+        </FormProvider>
       </Col>
     </StyledLoginPage>
   )

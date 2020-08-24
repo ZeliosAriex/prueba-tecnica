@@ -58,9 +58,7 @@ const UserDetailsPage = () => {
   const ui = useSelector((state) => state.ui)
   const [isFormEditable, setIsFormEditable] = useState(false)
   const dispatch = useDispatch()
-  const {
-    handleSubmit, register, setValue, errors
-  } = useForm()
+  const { setValue } = useForm()
   const { t } = useTranslation()
   // eslint-disable-next-line no-unused-vars
 
