@@ -12,6 +12,7 @@ import { startLoginUser } from '../../../store/actions/auth'
 import loginIcon from '../../../resources/images/people.svg'
 import MainContainer from '../common/MainContainer'
 import Input from '../common/Input'
+import Button from '../common/Button'
 
 const StyledLoginPage = styled(MainContainer).attrs({
   className: 'mt-5 mb-5',
@@ -103,9 +104,11 @@ const LoginPage = () => {
               />
             </div>
 
-            <button type='submit' className='btn btn-primary mt-4'>
-              {t('pages.login.form.signInBtn.label')}
-            </button>
+            <Button
+              className='btn-primary mt-4'
+              type='submit'
+              label={t('pages.login.form.signInBtn.label')}
+            />
           </form>
         </FormProvider>
       </Col>
