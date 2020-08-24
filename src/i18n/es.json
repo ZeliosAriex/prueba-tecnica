@@ -1,5 +1,4 @@
 {
-  "greetMessage": "Bienvenido :D",
   "pages": {
     "login": {
       "title": "Iniciar sesión",
@@ -81,5 +80,10 @@
   },
   "generic": {
     "fieldNotEmpty": "El campo no puede estar vacío"
+  },
+  "toasts": {
+    "greetMessage": "\uD83D\uDC4B\uD83C\uDFFC Bienvenido {{firstAndLastName}}",
+    "userUpdated": "✔️ Usuario actualizado con éxito",
+    "userDeleted": "\uD83D\uDDD1️️ Usuario borrado con éxito"
   }
 }

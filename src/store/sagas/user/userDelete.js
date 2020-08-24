@@ -5,6 +5,7 @@ import { createErrorAction } from '../../util/createErrorAction'
 import { userDeleteSuccess } from '../../actions/user'
 import { getT } from '../../util/getTranslation'
 import { uiFinishedLoading, uiIsLoading } from '../../actions/ui'
+import { displayWarningToast } from '../../actions/toast'
 
 function* requestUserDelete(action) {
   try {
@@ -16,6 +17,7 @@ function* requestUserDelete(action) {
     const response = yield call(apiCall, 'DELETE', endpoint)
 
     if (response.status === 204) {
+      yield put(displayWarningToast(getT('toasts.userDeleted')))
       yield put(userDeleteSuccess(userId))
       action.history.push('/')
     } else throw new Error(getT('errorMessages.userDeleteFailed'))
