@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { SkeletonTheme } from 'react-loading-skeleton'
-import App from './App'
+import App from './views/components/App'
 import * as serviceWorker from './serviceWorker'
 import theme from './styles/theme'
 import createStore from './store'
@@ -17,7 +17,7 @@ import { authCheck } from './store/actions/auth' // Configuramos la i18n
 const store = createStore()
 
 /* Hay que comprobar la autenticación lo antes posible, de lo contrario las rutas
-   no procesarán correctamente el estado de autenticación al no estar actualizado */
+*  no procesarán correctamente el estado de autenticación al no estar actualizado */
 store.dispatch(authCheck())
 
 ReactDOM.render(
