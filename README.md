@@ -1,4 +1,4 @@
-## Prueba técnica de Front End de LaLiga
+## Prueba técnica de Front End
 [![Netlify Status](https://api.netlify.com/api/v1/badges/dbb6340b-5f08-47c2-b99a-ddcc60ac08b4/deploy-status)](https://app.netlify.com/sites/prueba-tecnica-omar/deploys)
 
 [DEMO](https://prueba-tecnica-omar.netlify.app)
